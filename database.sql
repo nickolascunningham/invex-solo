@@ -12,13 +12,12 @@ CREATE TABLE "user" (
 CREATE TABLE "categories" (
     "id" SERIAL PRIMARY KEY,
     "title" VARCHAR (80) UNIQUE,
-    "description" VARCHAR (256),
-    "category_id" int
+    FOREIGN KEY(id) REFERENCES items(id) 
 );
 
 CREATE TABLE "items" (
     "id" SERIAL PRIMARY KEY,
-    "title" VARCHAR (80) UNIQUE,
-    "item_id" int
+    "title" VARCHAR (80) NOT NULL,
+     "description" VARCHAR(1000) NOT NULL,
+     FOREIGN KEY(id) REFERENCES categories(id) 
 );
-
