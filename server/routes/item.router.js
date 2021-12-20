@@ -19,13 +19,13 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  const queryString = `INSERT INTO "items" (title, description, category) VALUES ( $1, $2, $3 );`;
-  values = [ req.body.title, req.body.description, req.body.category ];
-   pool.query( queryString, value ).then( (results)=>{
-    res.sendStatus( 200 );
+  const queryString = `INSERT INTO items (title, description, category) VALUES ( $1, $2, $3 ) RETURNING *;`;
+  const values = [ req.body.title, req.body.description, req.body.category ];
+   pool.query( queryString, values).then( (results)=>{
+    res.send(results.rows[0]);
   }).catch( (err)=>{
     console.log("error post items", err );
-    res.sendStatus( 500 );
+    res.send(err);
   })
 });
 
