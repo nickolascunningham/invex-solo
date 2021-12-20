@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { useDispatch, useSelector } from "react-redux";
+import Category from "./Category";
+import './UserPage.css'
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -18,7 +20,7 @@ function UserPage() {
     return (
       <div className="container">
         {categories.map((category) => (
-          <div key={category.category_id}>Title: {category.title}</div>
+           <Category key={category.category_id} category={category}/>
         ))}
       </div>
     );

@@ -7,19 +7,65 @@ import {useSelector, useDispatch} from 'react-redux';
 function AddItemsPage(props) {
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch( { type: 'FETCH_ADDITEM'} );
-  }, [])
+  useEffect(() => {
+    dispatch({ type: "FETCH_CATEGORIES" });
+  }, []);
  
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
-  const store = useSelector((store) => store);
-  const [heading, setHeading] = useState('Add Items');
+  const categories = useSelector((store) => store.categories);
+  const [item, setItem] = useState({
+    title: "",
+    description: "",
+    category: null
+  });
+
+  const handleChange = e => {
+    setItem({...item, [e.target.name]: e.target.value})
+  }
+
+  const clearForm = () => {
+    setItem({
+      title: "",
+      description: "",
+      category: null
+    })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if(item.category === null){
+      alert("please select a category to continue")
+    }else{
+      console.log(item)
+      clearForm()
+    }
+    
+  }
 
   return (
     <div>
-      <h2>{heading}</h2>
-      <p>{ JSON.stringify( store ) }</p>
+       <form onSubmit={handleSubmit}>
+         <div>
+         <label>Title</label> 
+         <input required value={item.title} onChange={handleChange} type="text" name="title" />
+         </div>
+       
+       <div>
+       <label>Description</label> 
+       <input required value={item.description} onChange={handleChange} type="text" name="description" />
+       </div>
+
+       <select onChange={handleChange} name="category">  
+       <option selected='selected' value={item.category}>Select category</option>
+               {categories && categories.map(category => (
+                 <option value={category.value}>{category.title}</option>
+               ))}
+       </select>
+       
+       <button>Add Item</button>
+
+       </form>
     </div>
   );
 }

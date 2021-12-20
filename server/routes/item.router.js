@@ -19,8 +19,8 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  const queryString = `INSERT INTO "items" (  title, description, category_id) VALUES ( $1, $2, $3 );`;
-  values = [ req.body.title, req.body.description, req.body.category_id ];
+  const queryString = `INSERT INTO "items" (title, description, category) VALUES ( $1, $2, $3 );`;
+  values = [ req.body.title, req.body.description, req.body.category ];
    pool.query( queryString, value ).then( (results)=>{
     res.sendStatus( 200 );
   }).catch( (err)=>{
