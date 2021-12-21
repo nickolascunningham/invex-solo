@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import AddItemsPage from '../AddItemsPage.jsx/AddItemsPage';
+import ItemsList from '../ItemsList/ItemsList';
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,14 @@ function App() {
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/items/:category"
+          >
+            <ItemsList />
           </ProtectedRoute>
 
           <ProtectedRoute

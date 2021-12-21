@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import addItems from './addItems.reducer';
+import item from './addItems.reducer';
 import categories from './category.reducer'
 
 // rootReducer is the primary reducer for our entire project
@@ -13,7 +13,7 @@ import categories from './category.reducer'
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  addItems,
+  item,
   categories
 });
 

@@ -3,12 +3,14 @@ import { useSelector } from 'react-redux';
 import Items from '../Item/Item';
 
 function ItemsList(props) {
-    const store = useSelector((store) => store);
-    const [heading, setHeading] = useState('Items');
+    const {items} = useSelector((store) => store.item);
+
+    
+   
   
     return (
       <div>
-          { props.items.map(( item )=>( <Items item={ item }/>))}
+          { items.map(( item )=>( <Items item={ item }/>))}
       </div>
     );
   }

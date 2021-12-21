@@ -1,0 +1,46 @@
+
+
+.add-item{
+    margin: 20px auto;
+    width: 60%;
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    background: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form > * {
+    margin-bottom: 20px;
+ 
+}
+
+input[type="text"]{
+    padding: 10px;
+}
+
+.input-text{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+h2{
+    text-align: center;
+}
+
+select{
+    padding: 10px;
+}
+
+
+

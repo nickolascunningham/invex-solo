@@ -2,17 +2,35 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
-function* fetchAddItem() {
+function* addItem(action) {
+  const {data} = action
   try {
-    const response = yield axios.get('/api/add_items', config);
-    yield put({ type: 'SET_ADDITEMS', payload: response.data });
+    const response = yield axios.post('/api/items', data);
+   
+    yield put({ type: 'SET_ITEM', payload: response.data });
   } catch (error) {
-    console.log('Item get request failed', error);
+    console.log('Item post request failed', error);
   }
 }
 
+
+function* fetchItems () {
+  try{
+
+    const response = yield axios.get('/api/items')
+    console.log(response.data, ",==response from api")
+    yield put({ type: 'SET_ITEMS', payload: response.data });
+
+  }catch(error){
+    console.log('Items get request failed', error);
+  }
+}
+
+
+
 function* addItemSaga() {
-  yield takeLatest('FETCH_ADDITEM', fetchAddItem);
+  yield takeLatest('ADD_ITEM', addItem);
+  yield takeLatest('FETCH_ITEMS', fetchItems);
 }
 
 export default addItemSaga;

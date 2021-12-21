@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import './AddItemsPage.css'
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -38,20 +39,22 @@ function AddItemsPage(props) {
       alert("please select a category to continue")
     }else{
       console.log(item)
+      dispatch({ type: "ADD_ITEM", data: item});
       clearForm()
     }
     
   }
 
   return (
-    <div>
+    <div className='add-item'>
+      <h2>Add Item</h2>
        <form onSubmit={handleSubmit}>
-         <div>
+         <div className='input-text'>
          <label>Title</label> 
          <input required value={item.title} onChange={handleChange} type="text" name="title" />
          </div>
        
-       <div>
+       <div className='input-text'>
        <label>Description</label> 
        <input required value={item.description} onChange={handleChange} type="text" name="description" />
        </div>

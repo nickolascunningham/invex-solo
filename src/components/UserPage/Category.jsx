@@ -1,13 +1,18 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 const Category = ({category}) => {
 
-    const handleClick = id => {
-       
+
+    const history = useHistory()
+
+    const handleClick = () => {
+       console.log(category.title)
+       history.push(`/items/${category.title}`)
     }
 
     return (
-        <div className="category">
+        <div onClick={handleClick} className="category">
            <p> Title: {category.title} </p> 
             </div>
     )
