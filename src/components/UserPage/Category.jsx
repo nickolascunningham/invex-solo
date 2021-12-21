@@ -13,7 +13,7 @@ const Category = ({category}) => {
 
     return (
         <div onClick={handleClick} className="category">
-           <p> Title: {category.title} </p> 
+           <p>{category.title} </p> 
             </div>
     )
 }

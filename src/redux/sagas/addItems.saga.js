@@ -20,6 +20,7 @@ function* fetchItems () {
     const response = yield axios.get('/api/items')
     console.log(response.data, ",==response from api")
     yield put({ type: 'SET_ITEMS', payload: response.data });
+    yield put({ type: 'ITEM_SUCCESS'});
 
   }catch(error){
     console.log('Items get request failed', error);

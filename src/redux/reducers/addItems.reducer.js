@@ -1,5 +1,6 @@
 const initialState = {
-  items: []
+  items: [],
+   add_item_success: false
 }
 
 const addItemReducer = (state = initialState, action) => {
@@ -8,12 +9,21 @@ const addItemReducer = (state = initialState, action) => {
     return {
      ...state,
      items: action.payload
+    
     };
     case 'SET_ITEM':
       return {
         ...state,
-        items: [...state.items, action.payload]
+        items: [...state.items, action.payload],
+        add_item_success: "success"
       };
+
+      case 'ITEM_SUCCESS':
+        return {
+          ...state,
+          add_item_success: true
+        };
+
     default:
       return state;
   }

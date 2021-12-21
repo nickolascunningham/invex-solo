@@ -1,0 +1,31 @@
+
+
+
+.items{
+    width: 80%;
+    margin: 20px auto;
+    height: 100vh;
+    text-align: center;
+}
+
+
+.item{
+    padding: 20px;
+    background: lightgray;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.item:hover{
+    background: darkgray;
+}
+
+.item p{
+    text-align: center;
+    font-size: 2rem;
+   
+}
+
+.not-found p{
+    color: red;
+}

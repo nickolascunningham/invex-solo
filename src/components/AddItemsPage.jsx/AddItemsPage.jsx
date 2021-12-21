@@ -15,6 +15,10 @@ function AddItemsPage(props) {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
   const categories = useSelector((store) => store.categories);
+  const {add_item_success} = useSelector((store) => store.item)
+
+  console.log(add_item_success, "add_item_success")
+
   const [item, setItem] = useState({
     title: "",
     description: "",
@@ -39,7 +43,9 @@ function AddItemsPage(props) {
       alert("please select a category to continue")
     }else{
       console.log(item)
-      dispatch({ type: "ADD_ITEM", data: item});
+      dispatch({ type: "ADD_ITEM", data: item}) 
+          alert("successfully added!") 
+       
       clearForm()
     }
     

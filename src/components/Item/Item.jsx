@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-function Item(props) {
-    const dispatch = useDispatch();
+function Item({item}) {
+   
     return (
-        <li>
-            { props.items.title }
-        </li>
+        <p className="item">
+            { item.title }
+        </p>
     )
 }
 

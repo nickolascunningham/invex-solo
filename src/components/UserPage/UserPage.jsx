@@ -19,6 +19,7 @@ function UserPage() {
   if (categories && categories.length > 0) {
     return (
       <div className="container">
+        <h2>Categories</h2>
         {categories.map((category) => (
            <Category key={category.category_id} category={category}/>
         ))}
