@@ -14,6 +14,7 @@
     background: lightgray;
     border-radius: 5px;
     font-size: 1.2rem;
+    margin-bottom: 15px;
 }
 
 .item:hover{
@@ -22,7 +23,7 @@
 
 .item p{
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.3rem;
    
 }
 

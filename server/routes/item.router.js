@@ -29,6 +29,17 @@ router.post('/', (req, res) => {
   })
 });
 
+router.delete("/:id", (req, res) => {
+  const id = req.params.id
+    const queryString =  `DELETE FROM items WHERE id = $1 `
+    pool.query(queryString, [id])
+    .then(() => res.send("deleted"))
+    .catch( (err)=>{
+      console.log("error get items", err );
+      res.sendStatus( 500 );
+    })
+})
+
 /**
  * PUT route template
  */

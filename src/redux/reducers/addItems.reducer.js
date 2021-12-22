@@ -3,6 +3,8 @@ const initialState = {
    add_item_success: false
 }
 
+
+
 const addItemReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_ITEMS': 
@@ -23,6 +25,12 @@ const addItemReducer = (state = initialState, action) => {
           ...state,
           add_item_success: true
         };
+
+        case 'UPDATE_DELETE_ITEM': 
+        return {
+          ...state,
+          items: state.items.filter(item => item.id !== action.payload)
+        }
 
     default:
       return state;

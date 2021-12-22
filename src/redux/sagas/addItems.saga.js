@@ -20,10 +20,22 @@ function* fetchItems () {
     const response = yield axios.get('/api/items')
     console.log(response.data, ",==response from api")
     yield put({ type: 'SET_ITEMS', payload: response.data });
-    yield put({ type: 'ITEM_SUCCESS'});
+   
 
   }catch(error){
     console.log('Items get request failed', error);
+  }
+}
+
+
+function* deleteItem (action) {
+
+  try{
+  const {data} = action
+ yield axios.delete(`/api/items/${data}`)
+  yield put({ type: 'UPDATE_DELETE_ITEM', payload: data });
+  }catch(error){
+    console.log(error);
   }
 }
 
@@ -32,6 +44,7 @@ function* fetchItems () {
 function* addItemSaga() {
   yield takeLatest('ADD_ITEM', addItem);
   yield takeLatest('FETCH_ITEMS', fetchItems);
+  yield takeLatest('DELETE_ITEM', deleteItem);
 }
 
 export default addItemSaga;
