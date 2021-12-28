@@ -16,7 +16,7 @@ function Item({ item }) {
   return (
     <div className="item">
       <p>{item.title}</p>
-      <p>{item.description}</p>
+      <p>Description: {item.description}</p>
 
       <div>
         <button onClick={handleDelete}>Delete</button>

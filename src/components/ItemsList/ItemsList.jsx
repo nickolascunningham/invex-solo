@@ -1,41 +1,46 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import Items from '../Item/Item';
-import "./ItemList.css"
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import Items from "../Item/Item";
+import "./ItemList.css";
 
-function ItemsList(props) {
-    const {items} = useSelector((store) => store.item);
+function ItemsList() {
+  const { filteredItems, items } = useSelector((store) => store.item);
 
-   
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
-
-      const params = useParams()
-
-      const filteredItems = items.filter(item => item.category.toLowerCase() === params.category.toLowerCase())
-
-    // console.log(filteredItems, "filteredItems")
+  const params = useParams();
 
   useEffect(() => {
-    dispatch({ type: "FETCH_ITEMS" });
+    dispatch({ type: "FETCH_ITEMS", data: params.category });
   }, []);
-   
-  if(filteredItems && filteredItems.length > 0 ){
+
+
+
+  const searchItem = (e) => {
+    const value = e.target.value;
+    dispatch({ type: "GET_FILTERED_ITEMS", data: value });
+  };
+
+  if (items) {
     return (
       <div className="items">
+        <input type="text" onChange={searchItem} placeholder="search item..." />
+
         <h2>Category: {params.category}</h2>
-          {filteredItems.map(( item )=>( <Items key={item.id} item={ item }/>))}
+        Items
+        {filteredItems.map((item) => (
+         <Items key={item.id} item= {item} /> 
+        ))}
       </div>
-    )
-  }else{
+    );
+  } else {
     return (
       <div className="items not-found">
-    <p >items not found</p>
-    </div>
-    )
+        <p>items not found</p>
+      </div>
+    );
   }
-  }
-  
-  export default ItemsList;
-  
+}
+
+export default ItemsList;
