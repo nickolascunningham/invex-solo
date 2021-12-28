@@ -1,10 +1,10 @@
 .category {
-    background: lightgray;
-    padding: 30px;
+    background: rgb(163, 160, 160);
+    padding: 15px;
     margin-bottom: 10px;
     text-align: center;
     font-size: 1.3rem;
 }
 .category:hover{
-    background: darkgray;
+    background: rgb(122, 121, 121);
 }
