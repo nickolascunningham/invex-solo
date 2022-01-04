@@ -19,8 +19,8 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  const queryString = `INSERT INTO items (title, description, category) VALUES ( $1, $2, $3 ) RETURNING *;`;
-  const values = [ req.body.title, req.body.description, req.body.category ];
+  const queryString = `INSERT INTO items (title, description, category, user_id) VALUES ( $1, $2, $3, $4 ) RETURNING *;`;
+  const values = [ req.body.title, req.body.description, req.body.category, req.body.user_id ];
    pool.query( queryString, values).then( (results)=>{
     res.send(results.rows[0]);
   }).catch( (err)=>{
@@ -43,16 +43,17 @@ router.delete("/:id", (req, res) => {
 /**
  * PUT route template
  */
-//  router.put('/', (req, res) => {
-//   const queryString = `UPDATE "items" SET `;
-//   values = [ req.body.title, req.body.description, req.body.category_id ];
-//    pool.query( queryString, value ).then( (results)=>{
-//     res.sendStatus( 200 );
-//   }).catch( (err)=>{
-//     console.log("error puy  items", err );
-//     res.sendStatus( 500 );
-//   })
-// });
+ router.put('/:id', (req, res) => {
+  const id = req.params.id
+  const queryString = `UPDATE "items" SET title = $1, description = $2 WHERE id = $3 RETURNING *`;
+  const values = [ req.body.title, req.body.description, id];
+   pool.query( queryString, values ).then( (results)=>{
+    res.send( results.rows[0] );
+  }).catch( (err)=>{
+    console.log("error puy  items", err );
+    res.sendStatus( 500 );
+  })
+});
 
 
 module.exports = router;

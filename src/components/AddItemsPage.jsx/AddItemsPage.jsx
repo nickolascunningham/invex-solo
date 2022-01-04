@@ -16,13 +16,16 @@ function AddItemsPage(props) {
   // a default value of 'Functional Component'
   const categories = useSelector((store) => store.categories);
   const {add_item_success} = useSelector((store) => store.item)
+  const user = useSelector((store) => store.user);
+
 
   console.log(add_item_success, "add_item_success")
 
   const [item, setItem] = useState({
     title: "",
     description: "",
-    category: null
+    category: null,
+    user_id: user.id
   });
 
   const handleChange = e => {
@@ -33,9 +36,11 @@ function AddItemsPage(props) {
     setItem({
       title: "",
       description: "",
-      category: null
+      category: null //try hidden
     })
   }
+
+  console.log(item, "itemmmmmmm")
 
   const handleSubmit = e => {
     e.preventDefault();

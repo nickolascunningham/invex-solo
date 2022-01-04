@@ -6,6 +6,18 @@ import "./ItemList.css";
 
 function ItemsList() {
   const { filteredItems, items } = useSelector((store) => store.item);
+  const user = useSelector((store) => store.user);
+
+
+console.log(user, "user")
+
+console.log(filteredItems, "filtered!")
+
+const filteredItemsByUser = filteredItems.filter(item => item.user_id === user.id)
+
+
+
+
 
   const dispatch = useDispatch();
 
@@ -29,7 +41,7 @@ function ItemsList() {
 
         <h2>Category: {params.category}</h2>
         Items
-        {filteredItems.map((item) => (
+        {filteredItemsByUser.map((item) => (
          <Items key={item.id} item= {item} /> 
         ))}
       </div>

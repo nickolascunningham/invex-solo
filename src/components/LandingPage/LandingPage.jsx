@@ -20,15 +20,15 @@ function LandingPage() {
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            
           </p>
 
           <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. 
+      
           </p>
 
           <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
+           
           
           </p>
         </div>

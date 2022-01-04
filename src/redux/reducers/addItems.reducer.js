@@ -19,6 +19,12 @@ const addItemReducer = (state = initialState, action) => {
         add_item_success: "success",
       };
 
+      case "EDIT_ITEM": 
+      return {
+          ...state,
+          filteredItems: state.filteredItems.map(i => i.id === action.payload.id ? action.payload : i)
+      };
+
     case "FILTERED_ITEMS":
       return {
         ...state,
