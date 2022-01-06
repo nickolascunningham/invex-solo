@@ -25,6 +25,20 @@ function Item({ item }) {
     });
   };
 
+
+  const handleAddToBag = () => {
+
+  
+  
+
+  dispatch({
+    type: "ADD_BAG",
+    data: item
+  })
+  }
+
+  //grab item => action => server => response => reducer => store
+
   const handleSubmit = e => {
     e.preventDefault()
     dispatch({
@@ -76,6 +90,12 @@ function Item({ item }) {
           }}
         >
           Edit
+        </button>
+        <button
+          onClick={
+            handleAddToBag}
+        >
+          Add to Bag
         </button>
       </div>
     </div>

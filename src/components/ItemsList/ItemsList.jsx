@@ -9,6 +9,9 @@ function ItemsList() {
   const user = useSelector((store) => store.user);
 
 
+
+
+
 console.log(user, "user")
 
 console.log(filteredItems, "filtered!")

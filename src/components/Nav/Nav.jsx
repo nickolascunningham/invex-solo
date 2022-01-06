@@ -6,6 +6,9 @@ import { useSelector } from 'react-redux';
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const { bags } = useSelector((store) => store.bag);
+
+
 
   return (
     <div className="nav">
@@ -28,8 +31,8 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to={`/bag/${user.id}`}>
+              Bag ({bags.length}) 
             </Link>
 
             <Link className="navLink" to="/add_items">

@@ -21,3 +21,14 @@ CREATE TABLE "items" (
      "description" VARCHAR(1000) NOT NULL,
      FOREIGN KEY(id) REFERENCES categories(id) 
 );
+
+
+CREATE TABLE "bag" (
+    "bag_id" SERIAL PRIMARY KEY,
+     "id" INTEGER NOT NULL,
+    "title" VARCHAR (80) NOT NULL,
+     "description" VARCHAR(1000) NOT NULL,
+      "category" VARCHAR(1000) NOT NULL,
+       "user_id" INTEGER NOT NULL
+)
+

@@ -15,10 +15,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import BagPage from '../BagPage/BagPage'
 
 import './App.css';
 import AddItemsPage from '../AddItemsPage.jsx/AddItemsPage';
@@ -31,6 +31,7 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    dispatch({type: "FETCH_BAGS"})
   }, [dispatch]);
 
   return (
@@ -73,9 +74,9 @@ function App() {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/bag/:id"
           >
-            <InfoPage />
+            <BagPage />
           </ProtectedRoute>
 
           <ProtectedRoute
