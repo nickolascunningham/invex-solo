@@ -36,7 +36,7 @@ function InfoPage() {
           userBags && userBags.map(bag => (
             <div className="item bag">
                <p>Category: {bag.category}</p>
-                  <p>Title{bag.title}</p>
+                  <p>{bag.title}</p>
                   <p>Description: {bag.description}</p> 
                   <button onClick={() => handleDelete(bag.id)}>Delete</button>
             </div>
@@ -47,7 +47,7 @@ function InfoPage() {
   )
       }else{
               return (
-                <h1 style={{textAlign: "center"}}>No bag available!</h1>
+                <h1 style={{textAlign: "center"}}>Nothing in Bag!</h1>
               )
       }
 }

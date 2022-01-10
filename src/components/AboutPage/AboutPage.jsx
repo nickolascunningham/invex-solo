@@ -12,7 +12,7 @@ function AboutPage() {
         <p>Technologies Used:</p>
         <li>Node</li>
         <li>CSS</li>
-        <li>Redux</li>
+        <li>Redux-Saga</li>
         <li>Express</li>
         <li>React</li>
         <li>Postgresql</li>
